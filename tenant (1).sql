@@ -660,3 +660,86 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+-- phpMyAdmin SQL Dump
+-- version 4.5.4.1deb2ubuntu2.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Apr 26, 2020 at 11:42 PM
+-- Server version: 5.7.29-0ubuntu0.16.04.1
+-- PHP Version: 7.0.33-27+ubuntu16.04.1+deb.sury.org+1
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `tenant`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `leads`
+--
+
+CREATE TABLE `leads` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mobile` varchar(400) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type_of_room_id` int(11) DEFAULT NULL,
+  `type_of_room` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `property_name_id` int(11) DEFAULT NULL,
+  `property_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `budget` double(8,2) NOT NULL,
+  `date_of_enquiry` timestamp NULL DEFAULT NULL,
+  `followup_date` timestamp NULL DEFAULT NULL,
+  `followup_remark` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `leads`
+--
+
+INSERT INTO `leads` (`id`, `name`, `email`, `mobile`, `address`, `type_of_room_id`, `type_of_room`, `property_name_id`, `property_name`, `budget`, `date_of_enquiry`, `followup_date`, `followup_remark`, `active`, `created_at`, `updated_at`) VALUES
+(1, 'XYZ', 'xyz@gmial.com', '1234567890', 'Akola', 1, 'XYZ', 1, 'XYZ', 5000.00, '2020-04-13 18:30:00', '2020-04-28 18:30:00', 'Test the', 1, '2020-04-21 18:30:00', NULL),
+(2, 'abc', 'abc@gmial.com', '1234567820', 'pune', 2, 'XYZ', 2, 'aABC', 5000.00, '2020-04-13 18:30:00', '2020-04-28 18:30:00', 'Test the', 1, '2020-04-21 18:30:00', NULL),
+(3, 'pqr', 'pqr@gmial.com', '12345678100', 'Mumbai', 3, 'pqr', 3, 'pqr', 5000.00, '2020-04-13 18:30:00', '2020-04-28 18:30:00', 'Test the', 1, '2020-04-21 18:30:00', NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `leads`
+--
+ALTER TABLE `leads`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `leads_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `leads`
+--
+ALTER TABLE `leads`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
