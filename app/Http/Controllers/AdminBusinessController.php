@@ -63,7 +63,7 @@ class AdminBusinessController extends Controller
 //https://stackoverflow.com/questions/29165410/how-to-join-three-table-by-laravel-eloquent-model
 
 
-// business_id
+// id
 // business_name
 // user_id
 // state_id
@@ -96,48 +96,16 @@ class AdminBusinessController extends Controller
 // business_type_id
 // type	
 
-
-
-//business_id,business_name,user_name,user_mobile,state,user_city,type,business_employee_count,business_est_year,business_gst,business_pan,business_fssai,business_status
-
-
-// 0.0180 sec
-//SELECT business_id,business_name,user_name,user_mobile,state,user_city,type,business_employee_count,business_est_year ,business_gst,business_pan,business_fssai,business_status 
-        	
-        	//FROM business bb , users u, state s , business_type b where bb.user_id = u.user_id and bb.state_id = s.state_id and bb.business_type_id = b.business_type_id
-
-
-// 0.0130 sec
-// SELECT * FROM business bb , users u, state s , business_type b where bb.user_id = u.user_id and bb.state_id = s.state_id and bb.business_type_id = b.business_type_id
-
-
-// 0.0130 sec
-//SELECT business_id FROM business bb , users u, state s , business_type b where bb.user_id = u.user_id and bb.state_id = s.state_id and bb.business_type_id = b.business_type_id
-
-
-//or
-
-// 0.0120 sec
-// select * from business bb inner join users u on
-// bb.user_id = u.user_id inner join state s on 
-// bb.state_id = s.state_id inner join business_type b on 
-// bb.business_type_id = b.business_type_id;
-
-
-// 0.0140 sec
-// select * from business bb join users u on
-// bb.user_id = u.user_id join state s on 
-// bb.state_id = s.state_id join business_type b on 
-// bb.business_type_id = b.business_type_id;
-
-
         	$business_list =DB::table('business')
-                ->join('users','users.user_id', '=', 'business.user_id')
-                ->join('state', 'state.state_id', '=', 'business.state_id')
-                ->join('business_type', 'business_type.business_type_id', '=', 'business.business_type_id')
-                ->select('business_id','business_name','business.user_id','user_name','user_mobile','business.state_id','state','user_city','business.business_type_id','type','business_employee_count','business_est_year','business_gst','business_pan','business_fssai','business_status','zip','business_url','business_logo')
-                ->orderBy('business_id', 'desc')
+                ->join('users','users.id', '=', 'business.user_id')
+                ->join('state', 'state.id', '=', 'business.state_id')
+                ->join('business_type', 'business_type.id', '=', 'business.business_type_id')
+                ->select('business.id','business.business_name','business.user_id','user_name','user_mobile','business.state_id','state.state','user_city','business.business_type_id','business_type.type','business.business_employee_count','business.business_est_year','business.business_gst','business.business_pan','business.business_fssai','business.business_status','zip','business_url','business_logo')
+                ->orderBy('id', 'desc')
                 ->paginate(10)->ToArray();
+
+
+                // dd($business_list);
 
              //dd($business_list['data'][0]->business_est_year);
 
@@ -146,7 +114,14 @@ class AdminBusinessController extends Controller
                 $business_list['data'][$i]->business_est_year = Carbon::parse( $business_list['data'][$i]->business_est_year )->format('F j\\, Y');
             }
 
-            $data = array('business' => $business_list['data']);
+
+            $states=DB::table('state')->select('id','state')->get();
+            $users=DB::table('users')->select('id','user_name','user_mobile')->get();
+            $business_types=DB::table('business_type')->select('id','type')->get();
+
+
+
+            $data = array('business' => $business_list['data'] , 'states' => $states , 'users' => $users, 'btypes' => $business_types);
             return view('admin-business-table',$data);
 
         }
@@ -285,7 +260,7 @@ class AdminBusinessController extends Controller
 
             );
         
-            $business_id =  DB::table('business')->insertgetID($business_data);
+            $id =  DB::table('business')->insertgetID($business_data);
             return Response::json(array('status' => 'success' ),200 );
 	   
 
@@ -298,12 +273,14 @@ class AdminBusinessController extends Controller
     function editbusinessget(Request $req) // get
     {
 
+        $id= strip_tags( $req['id'] );
+
         $business_list =DB::table('business')
-        ->join('users','users.user_id', '=', 'business.user_id')
-        ->join('state', 'state.state_id', '=', 'business.state_id')
-        ->join('business_type', 'business_type.business_type_id', '=', 'business.business_type_id')
-        ->select('business_id','business_name','business.user_id','user_name','user_mobile','business.state_id','state','user_city','business.business_type_id','type','business_employee_count','business_est_year','business_gst','business_pan','business_fssai','business_status','zip','business_url','business_logo')
-        ->where('business_id',$req['id'])->get();
+                ->join('users','users.id', '=', 'business.user_id')
+                ->join('state', 'state.id', '=', 'business.state_id')
+                ->join('business_type', 'business_type.id', '=', 'business.business_type_id')
+                ->select('business.id','business.business_name','business.user_id','user_name','user_mobile','business.state_id','state.state','user_city','business.business_type_id','business_type.type','business.business_employee_count','business.business_est_year','business.business_gst','business.business_pan','business.business_fssai','business.business_status','zip','business_url','business_logo')
+                ->where('business.id',$id)->get();
 
            
         $data = array('business' => $business_list);
@@ -442,11 +419,11 @@ class AdminBusinessController extends Controller
 
             );
         
-            // $business_id =  DB::table('business')->insertgetID($business_data);
+            // $id =  DB::table('business')->insertgetID($business_data);
             // return Response::json(array('status' => 'success' ),200 );
 
 
-            $id= strip_tags( $req['business_id'] );
+            $id= strip_tags( $req['id'] );
             $update = Business::find($id)->update($business_data);
             return Response::json(array('status' => 'success' ),200 );
 	   

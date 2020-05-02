@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 
+
+
 Route::get('/login', 'LoginLogoutController@index')->name('login');
 Route::post('/login', 'LoginLogoutController@login');
 
@@ -18,14 +20,6 @@ Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@register');
 
 
-
-//select option ajax routes
-Route::get('/state', 'HomeController@state')->middleware('auth');
-Route::get('/user', 'HomeController@user')->middleware('auth');
-Route::get('/btype', 'HomeController@btype')->middleware('auth');
-
-
-
 Route::get('/', 'HomeController@index')->middleware('auth');
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
@@ -33,9 +27,12 @@ Route::get('/adminuser', 'AdminUserController@index')->middleware('auth');
 Route::get('/adminbusiness', 'AdminBusinessController@index')->middleware('auth');
 Route::get('/adminproperty', 'AdminPropertyController@index')->middleware('auth');
 Route::get('/adminguest', 'AdminGuestController@index')->middleware('auth');
+Route::get('/adminlead', 'AdminLeadController@index')->middleware('auth');
+
+
 //satish work
 Route::get('/adminlead', 'AdminLeadController@index')->middleware('auth');
-Route::get('/viewuser', 'AdminLeadController@viewuserget')->middleware('auth');
+Route::get('/viewlead', 'AdminLeadController@viewleadget')->middleware('auth');
 
 
 
@@ -130,25 +127,25 @@ Route::get('/d', function (){
 
 Route::get('/advanced-ui-kits-image-crop', function () {
     return view('advanced-ui-kits-image-crop');
-})->name('booking');
+});
 Route::get('/advanced-ui-kits-jquery-confirm', function () {
     return view('advanced-ui-kits-jquery-confirm');
-})->name('booking.monthly');
+});
 Route::get('/advanced-ui-kits-nestable', function () {
     return view('advanced-ui-kits-nestable');
-})->name('contact');
+});
 Route::get('/advanced-ui-kits-pnotify', function () {
     return view('advanced-ui-kits-pnotify');
-})->name('my_profile');
+});
 Route::get('/advanced-ui-kits-range-slider', function () {
     return view('advanced-ui-kits-range-slider');
-})->name('logout');
+});
 Route::get('/advanced-ui-kits-ratings', function () {
     return view('advanced-ui-kits-ratings');
-})->name('about');
+});
 Route::get('/advanced-ui-kits-session-timeout', function () {
     return view('advanced-ui-kits-session-timeout');
-})->name('enquiry');
+});
 Route::get('/advanced-ui-kits-sweet-alerts', function () {
     return view('advanced-ui-kits-sweet-alerts');
 });

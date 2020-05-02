@@ -47,6 +47,7 @@ class LoginLogoutController extends Controller
 	      'password' => $request->get('password')
 	     );
 
+		 
 
 	     if(Auth::attempt($user_data))
 	     {
@@ -70,5 +71,3 @@ class LoginLogoutController extends Controller
     	
 
 }
-
-?>

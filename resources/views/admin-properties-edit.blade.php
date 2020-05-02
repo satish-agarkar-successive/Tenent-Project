@@ -2,7 +2,6 @@
 Tenant - Edit Properties
 @endsection 
 @extends('layouts.main')
-
 @section('style')
 
 <link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css">
@@ -20,9 +19,10 @@ Tenant - Edit Properties
 
 @section('rightbar-content')
 
+
  <form method="POST" id="form" action="{{url('/')}}/addproperty" >
 
-   {{ csrf_field() }}
+      {{ csrf_field() }}
 
 
 <!-- Start Contentbar -->    
@@ -43,6 +43,51 @@ Tenant - Edit Properties
                    <!--  <form method="POST" action="{{url('/')}}/addproperties" >
 
                         {{ csrf_field() }} -->
+
+
+
+                         <div class="form-row">
+                            <div class="form-group col-md-4">
+                               
+                                <select name="propertytype" class="form-control">
+                                      <option  value="" selected>Select Property Type</option>
+                                      <option  value="">Paying Guest</option>
+                                      <option  value="">Hostel</option>
+                                      <option  value="">Private</option>
+                                </select>
+                            </div>
+                         <!--    <div class="form-group col-md-4">
+                               
+                                <select name="accommodationtype" class="form-control">
+                                      <option  value="" selected>Select Accommodation Type</option>
+                                      <option  value="">Guest House</option>
+                                      <option  value="">Hostel</option>
+                                      <option  value="">Apartment</option>
+                                      <option  value="">Hotel</option>
+                                      <option  value="">Resort</option>
+                                </select>
+                            </div> -->
+                            <div class="form-group col-md-4">
+                               
+                                <select name="user" class="form-control">
+                                      <option  value="" selected>Select User</option>
+                                      <option  value="">User 1</option>
+                                      <option  value="">User 2</option>
+                                      <option  value="">User 3</option>
+                                      <option  value="">user 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <select name="propgender" class="form-control">
+                                      <option  value="" selected>Select Property Gender</option>
+                                      <option  value="">Male</option>
+                                      <option  value="">Female</option>
+                                      <option  value="">Co-Head</option>
+                                      <option  value="">Co-Living</option>
+                                </select>
+                            </div>
+                        </div>
+                        
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -79,13 +124,7 @@ Tenant - Edit Properties
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <select name="city" class="form-control">
-                                      <option  value="" selected>Select City</option>
-                                      <option  value="">Mumbai</option>
-                                      <option  value="">Hyderabad</option>
-                                      <option  value="">Vasant Nagari</option>
-                                      <option  value="">Ooty</option>
-                                </select>
+                                <input name="city" id="city"  type="text" class=" city form-control" placeholder="City"required />
                             </div>
                             <div class="form-group col-md-3">
                                 <input type="number" class="form-control" name="zip" placeholder="Zip" oninput="javascript: if (this.value.length > 6) this.value = this.value.slice(0, 6);">
@@ -96,20 +135,19 @@ Tenant - Edit Properties
                         </div>
 
 
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
+                       <!--  <div class="form-row">
+                            <div class="form-group col-md-4">
                                
                                 <select name="propertytype" class="form-control">
                                       <option  value="" selected>Select Property Type</option>
-                                      <option  value="">Flat</option>
-                                      <option  value="">Villa</option>
-                                      <option  value="">Bungalow</option>
-                                      <option  value="">Duplex</option>
+                                      <option  value="">Paying Guest</option>
+                                      <option  value="">Hostel</option>
+                                      <option  value="">Private</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                
-                                <select name="city" class="form-control">
+                                <select name="accommodationtype" class="form-control">
                                       <option  value="" selected>Select Accommodation Type</option>
                                       <option  value="">Guest House</option>
                                       <option  value="">Hostel</option>
@@ -118,7 +156,7 @@ Tenant - Edit Properties
                                       <option  value="">Resort</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                
                                 <select name="user" class="form-control">
                                       <option  value="" selected>Select User</option>
@@ -128,17 +166,16 @@ Tenant - Edit Properties
                                       <option  value="">user 4</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <select name="propgender" class="form-control">
                                       <option  value="" selected>Select Property Gender</option>
                                       <option  value="">Male</option>
                                       <option  value="">Female</option>
                                       <option  value="">Co-Head</option>
-                                      <option  value="">Co-Living</option>                                      
-                                      <option  value="">Both</option>
+                                      <option  value="">Co-Living</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
 
                 </div>
 
@@ -297,12 +334,9 @@ Tenant - Edit Properties
 
 
 
-
-<!-- Start Contentbar -->    
+<!-- 
 <div class="contentbar breadcrumbbar" style="margin-top: 5%;" >
-    <!-- Start row -->
     <div class="row">
-        <!-- Start col -->
         <div class="col-lg-12">
             <div class="card m-b-30"  style="margin-bottom: 0%;"   style="margin-bottom: 0%;"  >
 
@@ -312,7 +346,6 @@ Tenant - Edit Properties
 
                 <div class="card-body" style="margin-bottom: 25px;">
 
-                    <!-- bifurcate form post by data present inside -->
                     <form method="POST" action="{{url('/')}}/addproperties" >
 
                         {{ csrf_field() }}
@@ -407,13 +440,11 @@ Tenant - Edit Properties
 
             </div>
         </div>
-        <!-- End col -->
-    </div> <!-- End row -->
+    </div> 
 </div>
-<!-- End Contentbar -->
 
 
-
+ -->
 
 
 

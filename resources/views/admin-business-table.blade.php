@@ -122,8 +122,8 @@ input:checked + .slider:before {
                             <thead>
                               <tr>
                                 <th>No</th>
-                                <th>Name Of Business</th>
-                                <th>Username , Mobile , State , City</th>
+                                <th>Name Of Business , Web Address</th>
+                                <th>Username , Mobile , State , City , Zip</th>
                                 <th>Type of Business</th>
                                 <th>Number of Employees</th>
                                 <th>Year of Establishment</th>
@@ -141,27 +141,27 @@ input:checked + .slider:before {
 
 <tr>
 
-<td>{{ $b -> business_id }}</td>
-<td>{{ $b -> business_name }}</td>
-<td>{{ $b -> user_name }}<br>{{ $b -> user_mobile }}<br>{{ $b -> state }}<br>{{ $b -> user_city }}</td>
+<td>{{ $b -> id }}</td>
+<td>{{ $b -> business_name }}<br><a  target="_blank" href="{{$b->business_url}}">{{ $b -> business_url }}</a></td>
+<td>{{ $b -> user_name }}<br>  <a href="tel:{{$b->user_mobile}}"> {{ $b -> user_mobile }} </a> <br>{{ $b -> user_city }}<br>{{ $b -> zip }}</td>
 <td>{{ $b -> type }}</td>
 <td>{{ $b -> business_employee_count }}</td>
 <td>{{ $b -> business_est_year }}</td>
 <td>{{ $b -> business_gst }}<br>{{ $b -> business_pan }}<br>{{ $b -> business_fssai }}</td>
 <td>
     @if( $b->business_status == 1)
-         <label class="switch"><input data-url="/adminbusiness" data-action="toggle" data-id="{{$b->business_id}}" data-value="0" type="checkbox" class="switchery" checked><span class="slider round"></span></label>
+         <label class="switch"><input data-url="/adminbusiness" data-action="toggle" data-id="{{$b->id}}" data-value="0" type="checkbox" class="switchery" checked><span class="slider round"></span></label>
     @else
-         <label class="switch"><input data-url="/adminbusiness" data-action="toggle" data-id="{{$b->business_id}}" data-value="1" type="checkbox" class="switchery" ><span class="slider round"></span></label>
+         <label class="switch"><input data-url="/adminbusiness" data-action="toggle" data-id="{{$b->id}}" data-value="1" type="checkbox" class="switchery" ><span class="slider round"></span></label>
     @endif
 </td>
 
 <td>
       <div class="btn-group btn-group-sm" style="float: none;">                             
             
-            <button type="button" data-id="{{$b->business_id}}"   href="javascript:void(0)" class=" edit  tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
+            <button type="button" data-id="{{$b->id}}" onclick="getdetails( {{$b->id}} )" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
             
-            <button type="button"  data-url="/adminbusiness" data-action="delete" data-id="{{$b->business_id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
+            <button type="button"  data-url="/adminbusiness" data-action="delete" data-id="{{$b->id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
       </div>
 </td>
 
@@ -219,14 +219,32 @@ input:checked + .slider:before {
                                      <div class="row align-items-center pb-3">
                                             <input name="business_name" type="text" class=" onlyalphaspace form-control" placeholder="Name Of Business" required />
                                       </div>
-
+                                      
                                       <div class="row align-items-center pb-3">
-                                            <select name="user_id" class=" user form-control"  required  >
+                                            <select name="business_type_id" class=" businesstype form-control" required  >
+                                                 <option  value="" selected>Select Business Type</option>
+                                                 @foreach($btypes as $b)
+                                                      <option value='{{ $b->id }}'>{{$b->type}}</option>
+                                                 @endforeach
                                             </select>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
-                                            <select name="state_id" class=" state form-control" required  ></select>
+                                            <select name="user_id" class=" user form-control"  required  >
+                                                <option  value="" selected>Select User</option>
+                                                @foreach($users as $u)
+<option  value='{{$u->id}}'> {{$u->user_name}} [  {{$u->id}} - {{$u->user_mobile}} ]</option>
+                                                @endforeach
+                                            </select>
+                                      </div>
+
+                                      <div class="row align-items-center pb-3">
+                                            <select name="state_id" class=" state form-control" required  >
+                                                 <option  value="" selected>Select State</option>
+                                                 @foreach($states as $s)
+                                                      <option value='{{ $s->id }}'>{{$s->state}}</option>
+                                                 @endforeach
+                                            </select>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
@@ -249,10 +267,6 @@ input:checked + .slider:before {
                                           <img id="uploadPreview" style=" float:center margin:2%; width: 100%; height: 100%; display: none;" />
                                       </div>
 
-                                      <div class="row align-items-center pb-3">
-                                            <select name="business_type_id" class=" businesstype form-control" required  >
-                                            </select>
-                                      </div>
 
                                       <div class="row align-items-center pb-3">
                                             <input name="business_employee_count" type="number" class=" empcount form-control" placeholder="Number Of Employees" required />
@@ -332,7 +346,7 @@ input:checked + .slider:before {
 
                                      <div class="row align-items-center pb-3">
 
-                                            <input name="business_id" id="edit_business_id" type="text" hidden />
+                                            <input name="id" id="edit_business_id" type="text" hidden />
                                             <input name="old_logoname" id="old_logoname" type="text" hidden />
 
                                             <input id="edit_business_name" name="business_name" type="text" class=" onlyalphaspace form-control" placeholder="Name Of Business" required />
@@ -340,12 +354,31 @@ input:checked + .slider:before {
                                       </div>
 
                                       <div class="row align-items-center pb-3">
-                                            <select id="edit_user_id" name="user_id" class=" user form-control"  required  >
+                                            <select id="edit_business_type_id" name="business_type_id" class=" businesstype form-control" required  >
+                                                <option  value="" selected>Select Business Type</option>
+                                                 @foreach($btypes as $b)
+                                                      <option value='{{ $b->id }}'>{{$b->type}}</option>
+                                                 @endforeach
+                                            </select>
+                                      </div>
+
+
+                                      <div class="row align-items-center pb-3">
+                                            <select id="edit_user_id" name="user_id" class=" user form-control" required>
+                                                <option  value="" selected>Select User</option>
+                                                @foreach($users as $u)
+<option  value='{{$u->id}}'>{{$u->user_name}} [  {{$u->id}} - {{$u->user_mobile}} ]</option>
+                                                @endforeach
                                             </select>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
-                                            <select id="edit_state_id" name="state_id" class=" state form-control" required  ></select>
+                                            <select id="edit_state_id" name="state_id" class=" state form-control" required  >
+                                                 <option  value="" selected>Select State</option>
+                                                 @foreach($states as $s)
+                                                      <option value='{{ $s->id }}'>{{$s->state}}</option>
+                                                 @endforeach
+                                            </select>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
@@ -368,10 +401,6 @@ input:checked + .slider:before {
                                           <img id="edit_uploadPreview" style=" float:center margin:2%; width: 100%; height: 100%; display: none;" />
                                       </div>
 
-                                      <div class="row align-items-center pb-3">
-                                            <select id="edit_business_type_id" name="business_type_id" class=" businesstype form-control" required  >
-                                            </select>
-                                      </div>
 
                                       <div class="row align-items-center pb-3">
                                             <input id="edit_business_employee_count" name="business_employee_count" type="number" class=" empcount form-control" placeholder="Number Of Employees" required />
@@ -445,18 +474,20 @@ input:checked + .slider:before {
 function getdetails(id) 
 {
 
+      $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+
        $.ajax({
           type: "GET",
           url: '/editbusiness',
           data: { 'id':id },
           dataType:"json",
+          async:'false',
           success: function(result) 
           { 
 
-              $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
               $("#infobar-editbusiness-sidebar").addClass("sidebarshow");
 
-              console.log(result.data.user_id);
+              console.log(result.data);
               var business = result.data;
 
               $('#edit_business_employee_count').val(business.business_employee_count);
@@ -474,13 +505,21 @@ function getdetails(id)
 
 
               $url = "{{ URL::asset('/BusinessLogos/') }}/"+business.business_logo;
-              $("#edit_uploadPreview").attr("src", $url);
-              $('#edit_uploadPreview').show();
-              $('#edit_imagename').text( "[ " +business.business_logo+ " ] , You Can Replace This Image By Re-Uploading New Image").show();
+
+              if(business.business_logo!=null)
+              {
+                  $("#edit_uploadPreview").attr("src", $url);
+                  $('#edit_uploadPreview').show();
+                  $('#edit_imagename').text( "[ " +business.business_logo+ " ] , You Can Replace This Image By Re-Uploading New Image").show();
+              }
+              else
+              {
+                   $('#edit_imagename').text( "Logo Was Not Uploaded").show();
+              }
 
               
               
-              $('#edit_business_id').val(business.business_id);
+              $('#edit_business_id').val(business.id);
               $('#old_logoname').val(business.business_logo);
 
 

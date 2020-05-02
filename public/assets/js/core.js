@@ -4,12 +4,15 @@
   File: Core JS File
 --------------------------------------------------------------
  */
+
+ // var ajax_result= {};
+
 "use strict";
 $(document).ready(function() {
 
-
     //made blur in style.css - search .infobar-settings-sidebar-overlay{}
-    $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+    // moved below line after appending options
+     $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
 
 
 
@@ -57,7 +60,7 @@ $(document).ready(function() {
 
 
     //$(".edit").on("click", function(e) 
-    //this add class is happining
+    //this addclass() is happining
     $(".infobar-edituser-open").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
@@ -71,20 +74,20 @@ $(document).ready(function() {
 
 
 
-    $(".edit").on("click", function(e) 
-     {
-        //alert($(this).data("id"));
-        //ajax call;
-        getdetails($(this).data("id")); // this function is in respective view
+    // $(".edit").on("click", function(e) 
+    //  {
+    //     //alert($(this).data("id"));
+    //     //ajax call;
+    //     getdetails($(this).data("id")); // this function is in respective view
 
-        e.preventDefault();
+    //     e.preventDefault();
 
-        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+    //     $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
         
-        //below lines are added in function getuserdetails() inside success
-        // $("#infobar-edituser-sidebar").addClass("sidebarshow");
+    //     //below lines are added in function getuserdetails() inside success
+    //     // $("#infobar-edituser-sidebar").addClass("sidebarshow");
 
-     }); 
+    //  }); 
 
 
 
@@ -253,6 +256,18 @@ $(document).ready(function() {
     }); 
 
 
+    
+
+    $("#infobar-viewlead-close").on("click", function(e) {
+        //e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-viewlead-sidebar").removeClass("sidebarshow");
+    });  
+
+
+
+
+
 
 
     //for editor
@@ -290,12 +305,12 @@ $(document).ready(function() {
       //all lenght are taken length - 1
 
 
-      $('.phone').keypress(function (e) { if (this.value.length > 9) {this.value = this.value.slice(0, 9);} });  
+      $('.phone').keypress(function (e) { if (this.value.length > 9) {this.value = this.value.slice(0, 9);}  });  
       if ($(".phone").length > 0) 
         {
             document.querySelector(".phone").addEventListener("keypress", function (evt) 
             {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
-        }
+      }
 
 
 
@@ -303,15 +318,15 @@ $(document).ready(function() {
       //$('.address').keypress(function (e) { if (this.value.length > 299) { this.value = this.value.slice(0, 299); }    });  
     
        
-       $('.city').keypress(function (e) { if (this.value.length > 49) { this.value = this.value.slice(0, 49); }        });
+       $('.city').keypress(function (e) { if (this.value.length > 49) { this.value = this.value.slice(0, 49); } });
        $('.city').keypress(function (e) {
             var regex = new RegExp("^[a-zA-Z \s]+$");
             var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
             if (regex.test(str)) { return true;} else { e.preventDefault(); return false;}
-        });
+       });
 
 
-      $('.zip').keypress(function (e) { if (this.value.length > 5) { this.value = this.value.slice(0, 5); }         });
+      $('.zip').keypress(function (e) {  if (this.value.length > 5) { this.value = this.value.slice(0, 5); }   });
       if ($(".zip").length > 0) 
         {
             document.querySelector(".zip").addEventListener("keypress", function (evt) 
@@ -320,7 +335,7 @@ $(document).ready(function() {
 
 
 
-      $('.dealvalue').keypress(function (e) { if (this.value.length > 7) { this.value = this.value.slice(0, 7); }         }); 
+      $('.dealvalue').keypress(function (e) { if (this.value.length > 7) { this.value = this.value.slice(0, 7); }   }); 
       if ($(".dealvalue").length > 0) 
         {
             document.querySelector(".dealvalue").addEventListener("keypress", function (evt) 
@@ -329,7 +344,7 @@ $(document).ready(function() {
 
 
       
-      $('.empcount').keypress(function (e) { if (this.value.length > 3) { this.value = this.value.slice(0, 3); }         });
+      $('.empcount').keypress(function (e) {  if (this.value.length > 3) { this.value = this.value.slice(0, 3); }  });
       if ($(".empcount").length > 0) 
         {
             document.querySelector(".empcount").addEventListener("keypress", function (evt) 
@@ -337,7 +352,7 @@ $(document).ready(function() {
         }
 
 
-      $('.year').keypress(function (e) { if (this.value.length > 3) { this.value = this.value.slice(0, 3); }         }); 
+      $('.year').keypress(function (e) {  if (this.value.length > 3) { this.value = this.value.slice(0, 3); }    }); 
       if ($(".year").length > 0) 
         {
             document.querySelector(".year").addEventListener("keypress", function (evt) 
@@ -345,7 +360,7 @@ $(document).ready(function() {
         }
 
 
-      $('.gst').keypress(function (e) { if (this.value.length > 14) { this.value = this.value.slice(0, 14); }         }); 
+      $('.gst').keypress(function (e) { if (this.value.length > 14) { this.value = this.value.slice(0, 14); }  }); 
       if ($(".gst").length > 0) 
         {
             document.querySelector(".gst").addEventListener("keypress", function (evt) 
@@ -353,7 +368,7 @@ $(document).ready(function() {
         }
 
 
-      $('.pan').keypress(function (e) { if (this.value.length > 9) { this.value = this.value.slice(0, 9); }         }); 
+      $('.pan').keypress(function (e) { if (this.value.length > 9) { this.value = this.value.slice(0, 9); }   }); 
       if ($(".pan").length > 0) 
         {
             document.querySelector(".pan").addEventListener("keypress", function (evt) 
@@ -361,7 +376,7 @@ $(document).ready(function() {
         }
 
 
-      $('.fssai').keypress(function (e) { if (this.value.length > 13) { this.value = this.value.slice(0, 13); }         });
+      $('.fssai').keypress(function (e) { if (this.value.length > 13) { this.value = this.value.slice(0, 13); }   });
       if ($(".fssai").length > 0) 
         {
             document.querySelector(".fssai").addEventListener("keypress", function (evt) 
@@ -370,68 +385,7 @@ $(document).ready(function() {
       
 
 
-        //state fieids
-        if ($(".state").length > 0) 
-        {
-              $.ajax({
-                  type: "GET",
-                  url: '/state',
-                  dataType:"json",
-                  success: function(result) 
-                  {   
-                        var state = result.state;
-                        var i;
-                        $('.state').append('<option  value="" selected>Select State</option>');
-                        for(i=0;i<state.length;i++)
-                        {
-                            $('.state').append('<option  value='+state[i]['state_id']+'>'+state[i]['state']+'</option>');
-                        }    
-                  }
-               });
-        }
 
-
-        //user fieids
-        if ($(".user").length > 0) 
-        {
-              $.ajax({
-                  type: "GET",
-                  url: '/user',
-                  dataType:"json",
-                  success: function(result) 
-                  {   
-                        var user = result.user; var i;
-                        $('.user').append('<option  value="" selected>Select User</option>');
-                        for(i=0;i<user.length;i++) { $('.user').append('<option  value='+user[i]['user_id']+'>'+user[i]['user_name']+' [ ' + user[i]['user_id']+' - '+user[i]['user_mobile'] + ' ]</option>'); }    
-                  }
-               });
-        }
-
-
-        //business type fieids
-        if ($(".businesstype").length > 0) 
-        {
-              $.ajax({
-                  type: "GET",
-                  url: '/btype',
-                  dataType:"json",
-                  success: function(result) 
-                  {   
-                        var btype = result.btype; var i;
-                        $('.businesstype').append('<option  value="" selected>Select Type Of Business</option>');
-                        for(i=0;i<btype.length;i++) { $('.businesstype').append('<option  value='+btype[i]['business_type_id']+'>'+btype[i]['type']+'</option>'); }    
-                  }
-               });
-        }
-
-
-
-
-
-
-
-
-    
 
     /* -- Menu Hamburger -- */
     $(".menu-hamburger").on("click", function(e) {

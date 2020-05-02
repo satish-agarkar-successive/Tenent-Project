@@ -209,8 +209,10 @@ Tenant - Add Properties
                                 <th>Block Name</th>
                                 <th>Floor</th>                                                  
                                 <th>Room Number</th>                                          
+                                <th>Room Gender</th>                                          
                                 <th>Room Type</th>                                          
                                 <th>Sharing Type</th>                                          
+                                <th>Furnshing</th>                                          
                                 <th>Action</th>                                        
                               </tr>
                             </thead>
@@ -219,9 +221,11 @@ Tenant - Add Properties
                                   <td>1</td>
                                   <td>Block A</td>
                                   <td>Basement</td>                              
-                                  <td>B01</td>      
+                                  <td>B01</td>
+                                  <td>Male</td>      
                                   <td>Deluxe</td>      
-                                  <td>2</td>      
+                                  <td>2</td>
+                                  <td>A/C , Water Heater , Sofa</td>      
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
@@ -243,9 +247,11 @@ Tenant - Add Properties
                                   <td>2</td>
                                   <td>Block A</td>
                                   <td>Basement</td>                              
-                                  <td>B02</td>         
+                                  <td>B02</td>
+                                  <td>Female</td>         
                                   <td>Semi - Deluxe</td>      
                                   <td>2</td> 
+                                  <td>A/C , Water Heater , Sofa</td> 
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
@@ -266,9 +272,11 @@ Tenant - Add Properties
                                   <td>3</td>
                                   <td>Block A</td>
                                   <td>6</td>                              
-                                  <td>601</td>        
+                                  <td>601</td>  
+                                  <td>Co-Living</td>      
                                   <td>Luxury</td>      
                                   <td>2</td> 
+                                  <td>A/C , Water Heater , Sofa</td> 
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
@@ -366,7 +374,8 @@ Tenant - Add Properties
                                 <th>Floor</th>                                                  
                                 <th>Room Number</th>
                                 <th>Bed Number</th>
-                                <th>Rent</th>                                                  
+                                <th>Rent With Food</th>                                                  
+                                <th>Rent Without Food</th>                                                  
                                 <th>Deposit</th>                                          
                                 <th>Maintenance</th>                                          
                                 <th>Action</th>                                        
@@ -378,7 +387,8 @@ Tenant - Add Properties
                                   <td>Block A</td>
                                   <td>Basement</td>                              
                                   <td>B01</td>      
-                                  <td>1</td>      
+                                  <td>1</td>  
+                                  <td>8000</td>    
                                   <td>5000/-</td>      
                                   <td>2000/-</td>      
                                   <td>500/-</td>      
@@ -404,8 +414,9 @@ Tenant - Add Properties
                                   <td>Block A</td>
                                   <td>1</td>                              
                                   <td>101</td>      
-                                  <td>1</td>      
+                                  <td>1</td>    
                                   <td>7000/-</td>      
+                                  <td>3000/-</td>    
                                   <td>2500/-</td>      
                                   <td>1000/-</td>  
                                   <td>
@@ -431,8 +442,9 @@ Tenant - Add Properties
                                   <td>Block A</td>
                                   <td>1</td>                              
                                   <td>101</td>      
-                                  <td>2</td>      
-                                  <td>7000/-</td>      
+                                  <td>2</td>
+                                  <td>5000/-</td>      
+                                  <td>3500/-</td>      
                                   <td>2500/-</td>      
                                   <td>1000/-</td>  
                                   <td>
@@ -456,8 +468,9 @@ Tenant - Add Properties
                                   <td>Block A</td>
                                   <td>1</td>                              
                                   <td>101</td>      
-                                  <td>3</td>      
-                                  <td>7000/-</td>      
+                                  <td>3</td> 
+                                  <td>4000/-</td>      
+                                  <td>2000/-</td>     
                                   <td>2500/-</td>      
                                   <td>1000/-</td>  
                                   <td>
@@ -472,33 +485,6 @@ Tenant - Add Properties
                                     </div>
 
                                   </td>
-
-                              </tr>
-
-
-                               <tr>
-                                  <td>4</td>
-                                  <td>Block A</td>
-                                  <td>2</td>                              
-                                  <td>201</td>      
-                                  <td>5</td>      
-                                  <td>8000/-</td>      
-                                  <td>3000/-</td>      
-                                  <td>1500/-</td>   
-                                  <td>
-                                    
-                                    <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)" class=" infobar-edit-bed-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-pencil"></span>
-                          </button>
-                          <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-trash"></span>
-                          </button>
-                                    </div>
-
-                                  </td>
-
-                              </tr>
 
                               
 
@@ -589,8 +575,8 @@ Tenant - Add Properties
                               <tr>
                                   <td>1</td>
                                   <td>A.C Electricity Bill</td>
-                                  <td>Amenities</td>                              
-                                  <td>50/- Per Hour</td>                              
+                                  <td>Per Unit</td>                              
+                                  <td>50/-</td>                              
                                   <td></td>      
                                   <td>
                                     
@@ -613,8 +599,8 @@ Tenant - Add Properties
                               <tr>
                                   <td>1</td>
                                   <td>New Matress</td>
-                                  <td>Furniture</td>                              
-                                  <td>2000/- Per Member</td>                              
+                                  <td>Lumpsum</td>                              
+                                  <td>2000/-</td>                              
                                   <td></td>      
                                   <td>
                                     
@@ -961,6 +947,17 @@ Tenant - Add Properties
 
                                       <div class="row align-items-center pb-3">
                                             <select name="roomtype" class="form-control"   >
+                                                  <option  value="" selected>Room Gender</option>
+                                                  <option  value="">Male</option>
+                                                  <option  value="">Female</option>
+                                                  <option  value="">Co-Living</option>
+                                            </select>
+                                      </div>
+
+
+
+                                      <div class="row align-items-center pb-3">
+                                            <select name="roomtype" class="form-control"   >
                                                   <option  value="" selected>Room Type</option>
                                                   <option  value="">Deluxe</option>
                                                   <option  value="">Semi - Deluxe</option>
@@ -987,6 +984,89 @@ Tenant - Add Properties
                                      <div class="row align-items-center pb-3">
                                             <input name="room" type="text" class="form-control" placeholder="Room Number"  />
                                       </div>
+
+
+
+
+
+                        
+                                        <div class="row align-items-center pb-3">
+                                            <div class="custom-control custom-checkbox ">
+                                                <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                <label class="custom-control-label" for="shoe">Below Feilds will come in tab</label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row align-items-center pb-3">
+                                            <div class="custom-control custom-checkbox ">
+                                                <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                <label class="custom-control-label" for="shoe">Shoe Rack</label>
+                                            </div>
+                                        </div>
+
+
+                                         <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">T.V Stand</label>
+                                              </div>
+                                          </div>
+
+                                          <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">Dining Table</label>
+                                              </div>
+                                          </div>
+
+
+                                        <div class="row align-items-center pb-3">
+                                            <div class="custom-control custom-checkbox ">
+                                                <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                <label class="custom-control-label" for="shoe">Chair</label>
+                                            </div>
+                                        </div>
+
+
+                                         <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">Stool</label>
+                                              </div>
+                                          </div>
+
+                                          <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">Tea Pie</label>
+                                              </div>
+                                          </div>
+
+
+                                        <div class="row align-items-center pb-3">
+                                            <div class="custom-control custom-checkbox ">
+                                                <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                <label class="custom-control-label" for="shoe">Sofa</label>
+                                            </div>
+                                        </div>
+
+
+                                         <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">Bed</label>
+                                              </div>
+                                          </div>
+
+                                          <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">Cupboard</label>
+                                              </div>
+                                          </div>
+                            
+
                                      
 
                                       <div class="row align-items-center pb-5 pull-right">
@@ -1058,6 +1138,16 @@ Tenant - Add Properties
                                       </div>
 
 
+                                      <div class="row align-items-center pb-3">
+                                            <select name="roomtype" class="form-control"   >
+                                                  <option  value="" selected>Room Gender</option>
+                                                  <option  value="">Male</option>
+                                                  <option  value="">Female</option>
+                                                  <option  value="">Co-Living</option>
+                                            </select>
+                                      </div>
+
+
 
                                       <div class="row align-items-center pb-3">
                                             <select name="roomtype" class="form-control"   >
@@ -1085,6 +1175,87 @@ Tenant - Add Properties
                                      <div class="row align-items-center pb-3">
                                             <input name="room" type="text" class="form-control" placeholder="Room Number"  />
                                       </div>
+
+
+
+
+                        
+                                        <div class="row align-items-center pb-3">
+                                            <div class="custom-control custom-checkbox ">
+                                                <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                <label class="custom-control-label" for="shoe">Below Feilds will come in tab</label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row align-items-center pb-3">
+                                            <div class="custom-control custom-checkbox ">
+                                                <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                <label class="custom-control-label" for="shoe">Shoe Rack</label>
+                                            </div>
+                                        </div>
+
+
+                                         <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">T.V Stand</label>
+                                              </div>
+                                          </div>
+
+                                          <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">Dining Table</label>
+                                              </div>
+                                          </div>
+
+
+                                        <div class="row align-items-center pb-3">
+                                            <div class="custom-control custom-checkbox ">
+                                                <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                <label class="custom-control-label" for="shoe">Chair</label>
+                                            </div>
+                                        </div>
+
+
+                                         <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">Stool</label>
+                                              </div>
+                                          </div>
+
+                                          <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">Tea Pie</label>
+                                              </div>
+                                          </div>
+
+
+                                        <div class="row align-items-center pb-3">
+                                            <div class="custom-control custom-checkbox ">
+                                                <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                <label class="custom-control-label" for="shoe">Sofa</label>
+                                            </div>
+                                        </div>
+
+
+                                         <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">Bed</label>
+                                              </div>
+                                          </div>
+
+                                          <div class="row align-items-center pb-3">
+                                              <div class="custom-control custom-checkbox ">
+                                                  <input type="checkbox" class="custom-control-input" id="shoe" value="shoe"  name="Furnishing[]">
+                                                  <label class="custom-control-label" for="shoe">Cupboard</label>
+                                              </div>
+                                          </div>
+                            
 
                                      
 
@@ -1239,9 +1410,16 @@ Tenant - Add Properties
                                      </div>
 
 
+                                     
                                      <div class="row align-items-center pb-3">
-                                            <input name="rent" type="number" class="form-control" placeholder="Rent Amount"  />
+                                            <input name="rentwithfood" type="number" class="form-control" placeholder="Rent Amount With Food"  />
                                      </div>
+
+
+                                     <div class="row align-items-center pb-3">
+                                            <input name="rentnofood" type="number" class="form-control" placeholder="Rent Amount Without Food"  />
+                                     </div>
+
 
 
                                      <div class="row align-items-center pb-3">
@@ -1341,7 +1519,12 @@ Tenant - Add Properties
 
 
                                      <div class="row align-items-center pb-3">
-                                            <input name="rent" type="number" class="form-control" placeholder="Rent Amount"  />
+                                            <input name="rentwithfood" type="number" class="form-control" placeholder="Rent Amount With Food"  />
+                                     </div>
+
+
+                                     <div class="row align-items-center pb-3">
+                                            <input name="rentnofood" type="number" class="form-control" placeholder="Rent Amount Without Food"  />
                                      </div>
 
 
@@ -1466,8 +1649,8 @@ Tenant - Add Properties
                                       <div class="row align-items-center pb-3">
                                             <select name="charge_type" class="form-control"   >
                                                   <option  value="" selected>Type Of Other Charge</option>
-                                                  <option  value="">Amenities</option>
-                                                  <option  value="">Furniture</option>
+                                                  <option  value="">Lumpsum</option>
+                                                  <option  value="">Per Unit</option>
                                             </select>
                                       </div>
 
@@ -1532,8 +1715,8 @@ Tenant - Add Properties
                                       <div class="row align-items-center pb-3">
                                             <select name="charge_type" class="form-control"   >
                                                   <option  value="" selected>Type Of Other Charge</option>
-                                                  <option  value="">Amenities</option>
-                                                  <option  value="">Furniture</option>
+                                                  <option  value="">Lumpsum</option>
+                                                  <option  value="">Per Unit</option>
                                             </select>
                                       </div>
 

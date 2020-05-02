@@ -126,6 +126,15 @@
 
     <script type="text/javascript">
 
+$(document).ready(function() {
+
+    $('.phone').keypress(function (e) { if (this.value.length > 9) {this.value = this.value.slice(0, 9);}  });  
+    document.querySelector(".phone").addEventListener("keypress", function (evt) 
+    {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+     
+});
+
+
     var noerror = false;
     
     function submitfun() 
@@ -183,7 +192,7 @@
                     $("#errors").append("</ul>").show();
 
                 } 
-                if(json.status === 500)
+                else if(json.status === 500)
                 { 
                     $("#errors").empty();
                     $("#errors").append("<ul>");

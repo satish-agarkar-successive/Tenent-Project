@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="form-group">
 
-                                            <input type="number" id="phone" class="form-control" value="{{ old('phone') }}"  name="phone" placeholder="Enter Mobile Number" oninput="javascript: if (this.value.length > 10) this.value = this.value.slice(0, 10);"  required>
+                                            <input type="number" id="phone" class=" phone form-control" value="{{ old('phone') }}"  name="phone" placeholder="Enter Mobile Number" oninput="javascript: if (this.value.length > 10) this.value = this.value.slice(0, 10);"  required>
 
                                         </div>
                                         <div class="form-group">
@@ -125,21 +125,20 @@
 <script type="text/javascript">
 
 
+$(document).ready(function() {
 
-
-
-        $('.onlyalphaspace').keypress(function (e) {
+    $('.phone').keypress(function (e) { if (this.value.length > 9) {this.value = this.value.slice(0, 9);}  });  
+    document.querySelector(".phone").addEventListener("keypress", function (evt) 
+    {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+     
+    $('.onlyalphaspace').keypress(function (e) {
         var regex = new RegExp("^[a-zA-Z \s]+$");
         var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-        if (regex.test(str)) {
-            return true;
-        }
-        else
-        {
-        e.preventDefault();
-        return false;
-        }
-      });
+        if (regex.test(str)) { return true;} else { e.preventDefault(); return false;}
+        //if (this.value.length > 199) { this.value = this.value.slice(0, 199); }
+    });
+
+});
 
 
 
@@ -223,7 +222,7 @@
                     $("#errors").append("</ul>").show();
 
                 } 
-                if(json.status === 500)
+                else if(json.status === 500)
                 { 
                     $("#errors").empty();
                     $("#errors").append("<ul>");

@@ -44,6 +44,51 @@ Tenant - Add Properties
 
                         {{ csrf_field() }} -->
 
+
+
+                         <div class="form-row">
+                            <div class="form-group col-md-4">
+                               
+                                <select name="propertytype" class="form-control">
+                                      <option  value="" selected>Select Property Type</option>
+                                      <option  value="">Paying Guest</option>
+                                      <option  value="">Hostel</option>
+                                      <option  value="">Private</option>
+                                </select>
+                            </div>
+                         <!--    <div class="form-group col-md-4">
+                               
+                                <select name="accommodationtype" class="form-control">
+                                      <option  value="" selected>Select Accommodation Type</option>
+                                      <option  value="">Guest House</option>
+                                      <option  value="">Hostel</option>
+                                      <option  value="">Apartment</option>
+                                      <option  value="">Hotel</option>
+                                      <option  value="">Resort</option>
+                                </select>
+                            </div> -->
+                            <div class="form-group col-md-4">
+                               
+                                <select name="user" class="form-control">
+                                      <option  value="" selected>Select User</option>
+                                      <option  value="">User 1</option>
+                                      <option  value="">User 2</option>
+                                      <option  value="">User 3</option>
+                                      <option  value="">user 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <select name="propgender" class="form-control">
+                                      <option  value="" selected>Select Property Gender</option>
+                                      <option  value="">Male</option>
+                                      <option  value="">Female</option>
+                                      <option  value="">Co-Head</option>
+                                      <option  value="">Co-Living</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                
@@ -90,18 +135,17 @@ Tenant - Add Properties
                         </div>
 
 
-                        <div class="form-row">
-                            <div class="form-group col-md-3">
+                       <!--  <div class="form-row">
+                            <div class="form-group col-md-4">
                                
                                 <select name="propertytype" class="form-control">
                                       <option  value="" selected>Select Property Type</option>
-                                      <option  value="">Flat</option>
-                                      <option  value="">Villa</option>
-                                      <option  value="">Bungalow</option>
-                                      <option  value="">Duplex</option>
+                                      <option  value="">Paying Guest</option>
+                                      <option  value="">Hostel</option>
+                                      <option  value="">Private</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                
                                 <select name="accommodationtype" class="form-control">
                                       <option  value="" selected>Select Accommodation Type</option>
@@ -112,7 +156,7 @@ Tenant - Add Properties
                                       <option  value="">Resort</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                
                                 <select name="user" class="form-control">
                                       <option  value="" selected>Select User</option>
@@ -122,17 +166,16 @@ Tenant - Add Properties
                                       <option  value="">user 4</option>
                                 </select>
                             </div>
-                            <div class="form-group col-md-3">
+                            <div class="form-group col-md-4">
                                 <select name="propgender" class="form-control">
                                       <option  value="" selected>Select Property Gender</option>
                                       <option  value="">Male</option>
                                       <option  value="">Female</option>
                                       <option  value="">Co-Head</option>
                                       <option  value="">Co-Living</option>
-                                      <option  value="">Both</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
 
                 </div>
 
@@ -291,12 +334,9 @@ Tenant - Add Properties
 
 
 
-
-<!-- Start Contentbar -->    
+<!-- 
 <div class="contentbar breadcrumbbar" style="margin-top: 5%;" >
-    <!-- Start row -->
     <div class="row">
-        <!-- Start col -->
         <div class="col-lg-12">
             <div class="card m-b-30"  style="margin-bottom: 0%;"   style="margin-bottom: 0%;"  >
 
@@ -306,7 +346,6 @@ Tenant - Add Properties
 
                 <div class="card-body" style="margin-bottom: 25px;">
 
-                    <!-- bifurcate form post by data present inside -->
                     <form method="POST" action="{{url('/')}}/addproperties" >
 
                         {{ csrf_field() }}
@@ -401,13 +440,11 @@ Tenant - Add Properties
 
             </div>
         </div>
-        <!-- End col -->
-    </div> <!-- End row -->
+    </div> 
 </div>
-<!-- End Contentbar -->
 
 
-
+ -->
 
 
 

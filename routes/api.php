@@ -16,3 +16,13 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/adminlead', 'AdminLeadController@index')->middleware('auth');
+
+Route::post('/verifyOtp', 'OtpVerifyController@verifyOtp');
+Route::post('/resend-otp', 'OtpVerifyController@resendOtp');
+Route::post('login', 'API\UserController@login');
+Route::post('register', 'API\UserController@register');
+Route::group(['middleware' => 'auth:api'], function(){
+Route::post('details', 'LoginLogoutController@details');
+});
+
